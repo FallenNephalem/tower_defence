@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://sprites/towerDefense_tilesheet.png" type="Texture" id=1]
 [ext_resource path="res://plane.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Path2D.gd" type="Script" id=3]
-[ext_resource path="res://Path2D2.gd" type="Script" id=4]
+[ext_resource path="res://Path2D2.gd" type="Script" id=3]
+[ext_resource path="res://Path2D.gd" type="Script" id=4]
+[ext_resource path="res://scenes/UI.gd" type="Script" id=5]
 
 [sub_resource type="TileSet" id=1]
 0/name = "towerDefense_tilesheet.png 0"
@@ -602,10 +603,11 @@ _data = {
 
 [sub_resource type="Curve2D" id=3]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 401.61, 1110.58, 0, 0, 0, 0, 255.404, 947.422, 0, 0, 0, 0, 331.685, 780.027, 0, 0, 0, 0, 748.706, 775.25, 0, 0, 0, 0, 895.552, 588.774, 0, 0, 0, 0, 895.32, 315.982, 0, 0, 0, 0, 1011.86, 195.203, 0, 0, 0, 0, 1097.74, 195.105, 0, 0, 0, 0, 1291.96, 382.193, 0, 0, 0, 0, 1603.04, 381.668, 0, 0, 0, 0, 1670.85, 440.998, 0, 0, 0, 0, 1670.85, 578.729, 0, 0, 0, 0, 1613.64, 638.059, 0, 0, 0, 0, 1240.29, 642.336, 0, 0, 0, 0, 1161.89, 720.735, 0, 0, 0, 0, 1163.67, 881.097, 0, 0, 0, 0, 1240.29, 959.496, 0, 0, 0, 0, 1997.16, 962.255 )
+"points": PoolVector2Array( 0, 0, 0, 0, 464.203, 1157.1, 0, 0, 0, 0, 255.404, 947.422, 0, 0, 0, 0, 331.685, 780.027, 0, 0, 0, 0, 748.706, 775.25, 0, 0, 0, 0, 895.552, 588.774, 0, 0, 0, 0, 895.32, 315.982, 0, 0, 0, 0, 1011.86, 195.203, 0, 0, 0, 0, 1097.74, 195.105, 0, 0, 0, 0, 1291.96, 382.193, 0, 0, 0, 0, 1603.04, 381.668, 0, 0, 0, 0, 1670.85, 440.998, 0, 0, 0, 0, 1670.85, 578.729, 0, 0, 0, 0, 1613.64, 638.059, 0, 0, 0, 0, 1240.29, 642.336, 0, 0, 0, 0, 1161.89, 720.735, 0, 0, 0, 0, 1163.67, 881.097, 0, 0, 0, 0, 1240.29, 959.496, 0, 0, 0, 0, 1997.16, 962.255 )
 }
 
 [node name="main" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 1 )
@@ -614,19 +616,21 @@ tile_data = PoolIntArray( 0, 19, 0, 1, 35, 0, 2, 19, 0, 3, 35, 0, 4, 19, 0, 5, 3
 
 [node name="Path2D" type="Path2D" parent="."]
 curve = SubResource( 2 )
-script = ExtResource( 3 )
-SpawnTime = 5
+script = ExtResource( 4 )
+enemy_count = 11
+SpawnTime = 2
 
 [node name="PathFollow2D" parent="Path2D" instance=ExtResource( 2 )]
 position = Vector2( -26.4134, 152.824 )
 rotation = 0.0153807
-speed = null
 
 [node name="Path2D2" type="Path2D" parent="."]
 curve = SubResource( 3 )
-script = ExtResource( 4 )
+script = ExtResource( 3 )
+enemy_count = 11
+SpawnTime = 2
 
 [node name="PathFollow2D" parent="Path2D2" instance=ExtResource( 2 )]
-position = Vector2( 401.61, 1110.58 )
-rotation = -2.30145
-speed = null
+position = Vector2( 464.203, 1157.1 )
+rotation = -2.35408
+runSpeed = 80
